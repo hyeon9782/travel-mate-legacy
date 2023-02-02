@@ -1,38 +1,32 @@
 import './App.css';
 import NaverLogin from './components/NaverLogin';
-import axios from 'axios';
-import {useEffect} from 'react';
+import { useEffect, useState } from 'react';
+import axios from "axios";
+import Location from './components/kakao/location';
 
 function App() {
-  const fetchData = () => {
-    console.log("요청 전");
 
-    const newWindow = window.open("https://map.naver.com/v5/api/bookmark/sync", '데이터');
+  const [ storeList, setStoreList ] = useState([]);
 
-    newWindow.alert("안녕");
-
-    // const el = newWindow.document.getElementsByTagName("pre");
-    const el = newWindow.document.querySelector("body > pre");
-    
-    const value = newWindow.document.getElementsByTagName("pre").values;
-
-    console.log("요청 후");
- 
-    console.log(el);
-    console.log(value);
-    // console.log(el.item(0));
-    
+  const fetchData = async () => {
+    const res = await axios.get('http://localhost:4000/api/store');
+    console.log(res);
+    console.log(res.data);
+    setStoreList(res.data);
   }
 
   useEffect(() => {
-    fetchData()
-  },[])
+    fetchData();
+  }, []);
 
   return (
     <div className="App">
       <h1>메인</h1>
-      <h2 className='test1'></h2>
+      {storeList.map((store) => {
+        return <div key={store.store_id}><div>{store.store_title}</div></div>;
+      })}
       <NaverLogin />
+      <Location />
     </div>
   );
 }
