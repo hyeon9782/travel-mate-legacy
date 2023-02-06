@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 import axios from "axios";
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import PlaceItem from './PlaceItem';
+import { useRecoilState } from 'recoil';
+import { placeState } from '../../store/placeState';
 
 const PlaceList = () => {
-    const [ placeList, setPlaceList ] = useState([]);
+    const [ placeList, setPlaceList ] = useRecoilState(placeState);
 
     const fetchData = async () => {
         const res = await axios.get('http://localhost:4000/api/place');
-        console.log(res);
-        console.log("place");
-        console.log(res.data.place);
+        
         setPlaceList(res.data.place);
     }
 
@@ -26,7 +26,7 @@ const PlaceList = () => {
     return (
         <PlaceContainer>
             {placeList.map((place) => {
-                return <PlaceItem placeName={place.name} placeAddr={place.addr} key={place.id} />
+                return <PlaceItem item={place} key={place.id} />
             })}
         </PlaceContainer>  
     )

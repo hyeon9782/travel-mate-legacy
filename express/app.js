@@ -70,17 +70,27 @@ const myStore = [
   },
 ];
 
+// const myPlace = [
+//   {
+    
+//   }
+// ]
+
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-// 내가 저장한 장소들을 가져온다.
+// 나의 저장소들을 가져온다.
 app.get("/api/store", (req, res) => {
     res.json(myStore);
 });
 
-// app.get("/api/store", (req, res) => {});
+// 선택한 저장소의 장소를 가져온다.
+app.get("/api/place/", (req, res) => {
+   
+  res.json(myStore[0]);
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

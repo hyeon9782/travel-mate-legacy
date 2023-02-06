@@ -1,20 +1,14 @@
 import styled from 'styled-components';
 
-
-const PlaceItem = ({ placeName, placeAddr }) => {
-
-    function addMarker(placeName, placeNo) {
-        console.log(`${placeNo}번째 목적지 ${placeName}`);
-    }
-
+const CourceItem = (item) => {
     return (
-        <Wrap onClick={addMarker}>
-            {placeName}
-        </Wrap>
+        <Item>
+            {item.content ? item.content : "기본"} 
+        </Item>
     )
 }
 
-const Wrap = styled.div`
+const Item = styled.div`
     padding: 10px;
     background-color: lightgray;
     margin: 10px;
@@ -28,4 +22,5 @@ const Wrap = styled.div`
 `
 
 
-export default PlaceItem;
+
+export default CourceItem;

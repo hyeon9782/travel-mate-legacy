@@ -1,11 +1,12 @@
 import styled from 'styled-components';
-import Days from './Days';
+import CourceTab from '../cource/CourceTab';
+import DayList from '../days/DayList';
 
 const PlanningCourse = () => {
     return (
         <PlanningCourseContainer>
-            <Days />
-            안녕하세요
+            {/* <DayList /> */}
+            <CourceTab />
         </PlanningCourseContainer>
     )
 }

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import PlaceList from "../components/plan/PlaceList";
+import PlaceList from "../components/place/PlaceList";
 import PlanningCourse from '../components/plan/PlanningCourse';
 import Location from '../components/kakao/Location';
 
