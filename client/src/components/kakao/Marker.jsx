@@ -1,7 +1,16 @@
-export default function Marker({sequence}) {
+import styled from 'styled-components';
+
+const Marker = () => {
+
+    
+
     return (
-        <div id="marker">
-            <div></div>
-        </div>
+        <MarkerWrap></MarkerWrap>
     )
 }
+
+const MarkerWrap = styled.div`
+    
+`
+
+export default Marker;

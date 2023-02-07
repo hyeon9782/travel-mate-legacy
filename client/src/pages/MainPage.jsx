@@ -1,10 +1,16 @@
 import styled from 'styled-components';
+import MapTest from '../components/google/MapTest';
 
 
 const MainPage = () => {
+
+    const containerStyle = {
+        width: '400px',
+        height: '400px'
+    };
     return (
         <MainContainer>
-            Main
+            <MapTest mapLocation="" containerStyle={containerStyle}/>
         </MainContainer>
     )
 }

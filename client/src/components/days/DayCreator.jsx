@@ -1,18 +1,19 @@
 import { useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { dayListState } from '../../store/dayListState';
+import { courceTabState } from '../../store/courceTabState';
 import CourceItem from '../cource/CourceItem';
+import CourceList from '../cource/CourceList';
 
 const DayCreator = () => {
 
-    const setDayList = useSetRecoilState(dayListState);
+    const setCourceTab= useSetRecoilState(courceTabState);
 
     const addItem = () => {
-        setDayList((oldDayList) => [
+        setCourceTab((oldDayList) => [
             ...oldDayList,
             {
                 day: getDay(),
-                content: <CourceItem />
+                content: <CourceList />
             }
         ]);
     }

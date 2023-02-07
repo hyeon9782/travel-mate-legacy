@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 import PlaceItem from './PlaceItem';
 import { useRecoilState } from 'recoil';
 import { placeState } from '../../store/placeState';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
 const PlaceList = () => {
     const [ placeList, setPlaceList ] = useRecoilState(placeState);
@@ -14,20 +16,29 @@ const PlaceList = () => {
         setPlaceList(res.data.place);
     }
 
-    function addMarker(name, sequence) {
-        console.log(`${sequence}번째 목적지 ${name}`);
-    }
-
-
     useEffect(() => {
         fetchData();
     }, []);
 
     return (
         <PlaceContainer>
-            {placeList.map((place) => {
-                return <PlaceItem item={place} key={place.id} />
-            })}
+            <Swiper
+                spaceBetween={10}
+                slidesPerView={ placeList.length < 8 ? placeList.length : 8 }
+            >
+                {placeList.map((place) => {
+                    return (
+                        <SwiperSlide key={place.id}>
+                            <PlaceItem item={place}  />
+                        </SwiperSlide>
+                    )
+                })}
+            </Swiper>
+            {/* {placeList.map((place) => {
+                return (
+                    <PlaceItem item={place} key={place.id} />
+                )
+            })} */}
         </PlaceContainer>  
     )
 }

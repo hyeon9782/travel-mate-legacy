@@ -1,18 +1,20 @@
-import { atom } from "recoil";
+import { atom, selector } from "recoil";
 import CourceList from "../components/cource/CourceList";
+import { courceListState } from "./courceListState";
 
-export const courceTabState = atom({
+export const courceTabState = selector({
   key: "courceTabState",
-  default: [
-    {
-      id: 1,
-      name: "1번",
-      content: <CourceList />,
-    },
-    {
-      id: 1,
-      name: "2번",
-      content: <CourceList />,
-    },
-  ],
+  get: ({ get }) => {
+    const courceList = get(courceListState);
+
+    const courceList1 = [
+      {
+        name: 312,
+        content: <CourceList item={courceList} />,
+      },
+    ];
+
+
+    return courceList1;
+  }
 });

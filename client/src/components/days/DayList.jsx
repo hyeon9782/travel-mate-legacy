@@ -1,16 +1,14 @@
-import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { dayListState } from '../../store/dayListState';
 import DayCreator from './DayCreator';
 import DayItem from './DayItem';
 
-const DayList = () => {
+const DayList = ({list}) => {
 
-    const dayList = useRecoilValue(dayListState);
+    // const dayList = useRecoilValue(dayListState);
 
     return (
         <DayWrap>
-            {dayList.map((dayItem) => {
+            {list.map((dayItem) => {
                 return <DayItem key={dayItem.day} item={dayItem} />
             })}
             <DayCreator />

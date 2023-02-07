@@ -1,18 +1,24 @@
 import { useRecoilState } from "recoil";
 import { courceListState } from "../../store/courceListState";
 import CourceItem from "./CourceItem";
+import styled from 'styled-components';
 
-const CourceList = () => {
+const CourceList = ({list}) => {
 
     const [courceList, setCourceList] = useRecoilState(courceListState)
 
     return (
-        <div>
-            {courceList.map((cource) => {
-                return <CourceItem item={cource}/>
+        <CourceBox>
+            {courceList.map((cource, index) => {
+                return <CourceItem item={cource} key={index}/>
             })}
-        </div>
+        </CourceBox>
     )
 }
+
+const CourceBox = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+`
 
 export default CourceList;
