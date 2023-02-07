@@ -8,7 +8,7 @@ const center = {
 
 const MapTest = ({ mapLocation, containerStyle, mapviewMarkerClickHandler }) => {
   return (
-    <LoadScript googleMapsApiKey="AIzaSyAiclkBD1WmTej_SNWUEZNgG5WPcfSiyO4">
+    <LoadScript googleMapsApiKey={process.env.GOOGLE_API_KEY}>
       <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={10}>
         {!Array.isArray(mapLocation) ? (
           <Marker position={mapLocation} />
