@@ -1,17 +1,17 @@
 import styled from 'styled-components';
-import axios from "axios";
 import { useEffect } from 'react';
 import PlaceItem from './PlaceItem';
 import { useRecoilState } from 'recoil';
 import { placeState } from '../../store/placeState';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import { getPlace } from '../../apis/place';
 
 const PlaceList = () => {
     const [ placeList, setPlaceList ] = useRecoilState(placeState);
 
     const fetchData = async () => {
-        const res = await axios.get('http://localhost:4000/api/place');
+        const res = await getPlace();
         
         setPlaceList(res.data.place);
     }
