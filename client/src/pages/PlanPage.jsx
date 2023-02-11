@@ -10,8 +10,8 @@ const PlanPage = () => {
             <PlaceList />
             <div style={{"display": "flex", "width":"100%", "height":"100%"}}>
                 <PlanningCourse />
-                {/* <Location /> */}
-                <Map />
+                <Location />
+                {/* <Map /> */}
             </div>
             <ButtonBox />
         </PlanContainer>

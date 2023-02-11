@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const cors = require('cors');
+const request = require("request");
+const axios = require("axios");
 const port = 4000;
 
 app.use(cors())
@@ -115,6 +117,29 @@ app.get("/api/store", (req, res) => {
 app.get("/api/place/", (req, res) => {
    
   res.json(myStore[0]);
+});
+
+
+
+app.get("/api/naver_route", async (req, res) => {
+
+  console.log("안녕");
+
+  const start = "37.6412,127.0276";
+  const goal = "37.5813,127.0463";
+  const option = "trafast";
+
+  const result = await axios.get(
+    `https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving?start=${start}$goal=${goal}&option=${option}`,
+    {
+      
+    }
+  );
+  console.log("잘가");
+
+  // console.log(result);
+  console.log(result.data);
+  res.json();
 });
 
 app.listen(port, () => {

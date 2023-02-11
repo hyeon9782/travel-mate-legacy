@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { naverRoute, naverRoute1 } from '../apis/naver';
 import Modal from '../components/modal/Modal';
 import SwiperTest from '../components/swiper/SwiperTest';
 
@@ -16,10 +17,16 @@ const MainPage = () => {
         setOpen(true);
     }
 
+    const naverDirection = async () => {
+        const res = await naverRoute1();
+        console.log(res);
+    } 
+
     return (
         <MainContainer>
             <SwiperTest />
             <button onClick={handleClick}>모달 열기</button>
+            <button onClick={naverDirection}>길찾기</button>
             <Modal isOpen={isOpen}/>
         </MainContainer>
     )
