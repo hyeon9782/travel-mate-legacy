@@ -14,6 +14,11 @@ let Header = () => {
                         </Link>
                     </li>
                     <li style={{"padding": "10px"}}>
+                        <Link to="/search">
+                            검색
+                        </Link>
+                    </li>
+                    <li style={{"padding": "10px"}}>
                         <Link to="/plan">
                             코스
                         </Link>
