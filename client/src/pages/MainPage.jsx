@@ -34,6 +34,7 @@ const MainPage = () => {
 
 const MainContainer = styled.div`
     margin-top: 80px;
+    
     font-size: 100px;
     /* height: 300px; */
     /* display: flex; */

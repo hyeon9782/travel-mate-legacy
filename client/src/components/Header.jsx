@@ -23,6 +23,11 @@ let Header = () => {
                             코스
                         </Link>
                     </li>
+                    <li style={{"padding": "10px"}}>
+                        <Link to="/party">
+                            동행
+                        </Link>
+                    </li>
                 </ul>
             </Nav>
             <Login>Login</Login>
@@ -37,9 +42,9 @@ const HeaderContainer = styled.div`
     width: 100%;
     background-color: lightgray;
     font-size: 34px;
-    position: fixed;
+    /* position: fixed;
     top: 0;
-    left: 0;
+    left: 0; */
 `
 
 const Log = styled.div`

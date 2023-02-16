@@ -6,6 +6,7 @@ import { BrowserRouter ,Routes, Route } from 'react-router-dom';
 import NotFound from './pages/NotFound';
 import { RecoilRoot } from 'recoil';
 import SearchPage from './pages/SearchPage';
+import PartyPage from './pages/PartyPage';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Header />
           <Routes>
             <Route path='/' element={<MainPage />} />
+            <Route path='/party' exact element={<PartyPage />} />
             <Route path='/plan' exact element={<PlanPage />} />
             <Route path='/search' exact element={<SearchPage />} />
             <Route path='/*' element={<NotFound />} />
