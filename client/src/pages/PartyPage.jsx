@@ -10,7 +10,6 @@ const PartyPage = () => {
 }
 
 const PartyPageBloack = styled.div`
-    margin-top: 80px;
     width: 1260px;
     margin: 0 auto;
 `

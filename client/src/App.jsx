@@ -7,6 +7,7 @@ import NotFound from './pages/NotFound';
 import { RecoilRoot } from 'recoil';
 import SearchPage from './pages/SearchPage';
 import PartyPage from './pages/PartyPage';
+import WritingPage from './pages/WritingPage';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
             <Route path='/party' exact element={<PartyPage />} />
             <Route path='/plan' exact element={<PlanPage />} />
             <Route path='/search' exact element={<SearchPage />} />
+            <Route path='/writing' exact element={<WritingPage />} />
             <Route path='/*' element={<NotFound />} />
           </Routes>
         </BrowserRouter>

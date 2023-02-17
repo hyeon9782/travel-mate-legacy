@@ -39,6 +39,56 @@ const PartyList = () => {
             startDate: "2023.02.10",
             endDate: "2023.02.16",
         },
+        {
+            id: 4,
+            title: "제목 5",
+            area: "부산",
+            startDate: "2023.02.10",
+            endDate: "2023.02.16",
+        },
+        {
+            id: 4,
+            title: "제목 5",
+            area: "부산",
+            startDate: "2023.02.10",
+            endDate: "2023.02.16",
+        },
+        {
+            id: 4,
+            title: "제목 5",
+            area: "부산",
+            startDate: "2023.02.10",
+            endDate: "2023.02.16",
+        },
+        {
+            id: 4,
+            title: "제목 5",
+            area: "부산",
+            startDate: "2023.02.10",
+            endDate: "2023.02.16",
+        },
+        {
+            id: 4,
+            title: "제목 5",
+            area: "부산",
+            startDate: "2023.02.10",
+            endDate: "2023.02.16",
+        },
+        {
+            id: 4,
+            title: "제목 5",
+            area: "부산",
+            startDate: "2023.02.10",
+            endDate: "2023.02.16",
+        },
+        {
+            id: 4,
+            title: "제목 5",
+            area: "부산",
+            startDate: "2023.02.10",
+            endDate: "2023.02.16",
+        },
+        
     ]
 
     return (

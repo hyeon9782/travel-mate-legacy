@@ -19,7 +19,6 @@ const PlanPage = () => {
 }
 
 const PlanContainer = styled.div`
-    margin-top: 80px;
     height:100%;
 `
 

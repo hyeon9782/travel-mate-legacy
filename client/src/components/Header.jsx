@@ -5,7 +5,11 @@ import {Outlet, Link} from 'react-router-dom';
 let Header = () => {
     return (
         <HeaderContainer>
-            <Log>Logo</Log>
+            <Logo>
+                <Link to="/">
+                    Logo
+                </Link>
+            </Logo>
             <Nav>
                 <ul style={{"display":"flex"}}>
                     <li style={{"padding": "10px"}}>
@@ -30,7 +34,16 @@ let Header = () => {
                     </li>
                 </ul>
             </Nav>
-            <Login>Login</Login>
+            <WriteBtn>
+                <Link to="/writing">
+                    글쓰기
+                </Link>
+            </WriteBtn>
+            <Login>
+                <Link to="/">
+                    Login
+                </Link>
+            </Login>
             <Outlet />
         </HeaderContainer>
     )
@@ -41,28 +54,51 @@ const HeaderContainer = styled.div`
     height: 80px;
     width: 100%;
     background-color: lightgray;
-    font-size: 34px;
-    /* position: fixed;
+    font-size: 2em;
+    position: sticky;
     top: 0;
-    left: 0; */
+    left: 0;
 `
 
-const Log = styled.div`
+const Logo = styled.div`
     font-weight: bold;
     width: 15%;
     padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    Link {
+        color: black;
+
+    }
 `
 
 const Nav = styled.div`
     font-weight: bold;
     padding: 10px;
-    width: 70%;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 `
 
 const Login = styled.div`
     font-weight: bold;
     padding: 10px;
     width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
+const WriteBtn = styled.div`
+    font-size: 1em;
+    font-weight: bold;
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 export default Header;

@@ -60,7 +60,7 @@ const SearchPage = () => {
 }
 
 const SearchContainer = styled.div`
-    margin-top: 80px;
+    
 `
 
 const PlaceList = styled.div`
