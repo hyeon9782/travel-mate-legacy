@@ -20,13 +20,30 @@ const AreaList = () => {
 
     return (
         <AreaListBlock>
-            {areas.map(area => <AreaItem key={area.id} item={area} />)}
+            <AreaTab>
+                <span>국내</span>ㅣ<span>해외</span>
+            </AreaTab>
+            <AreaListBox>
+                {areas.map(area => <AreaItem key={area.id} item={area} />)}
+            </AreaListBox>
         </AreaListBlock>
     )
 }
 
 const AreaListBlock = styled.div`
+    
+`
+
+const AreaListBox = styled.div`
     display: flex;
+`
+
+const AreaTab = styled.div`
+    
+    font-size: 1.7rem;
+    span {
+        padding: 10px;
+    }
 `
 
 export default AreaList;

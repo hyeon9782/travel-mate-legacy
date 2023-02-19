@@ -8,7 +8,7 @@ const MainPage = () => {
 
     return (
         <MainContainer>
-            <SwiperTest />
+            {/* <SwiperTest /> */}
             <AreaList />
             <BulletinList />
         </MainContainer>

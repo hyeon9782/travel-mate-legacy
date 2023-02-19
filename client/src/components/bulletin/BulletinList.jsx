@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { fetchBulletin } from '../../apis/bulletin';
 import BulletinItem from './BulletinItem';
 
 const BulletinList = () => {
@@ -51,6 +53,19 @@ const BulletinList = () => {
     ]
 
     const tabs = ["동행 모집", "여행 후기", "여행 질문"]
+
+    const [testList, setTestList] = useState();
+
+    // useEffect(() => {
+    //     getData()
+    // },[])
+
+    const getData = async () => {
+        console.log("들어옴")
+        setTestList(await fetchBulletin())
+        console.log("함수 실행 후")
+    }
+    
 
     return (
         <BulletinListBlock>

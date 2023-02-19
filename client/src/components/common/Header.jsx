@@ -1,19 +1,26 @@
 import styled from 'styled-components';
 import {Outlet, Link} from 'react-router-dom';
+import { useState } from 'react';
 
 
 let Header = () => {
 
+    const [click, setClick] = useState(false);
+
+    const [isLogin, setLogin] = useState(false);
+
     const navList = [
         {
             name: "글쓰기",
-            link: "/"
+            link: "/register"
         },
         {
-            name: "여행 코스",
-            link: "/cource"
+            name: "여행 기획",
+            link: "/search"
         }
     ]
+
+    const onClick = () => setClick(click ? false : true);
 
     return (
         <HeaderContainer>
@@ -25,13 +32,41 @@ let Header = () => {
                 </Logo>
                 <LinkBlock>
                     <Nav>
-                        {navList.map(nav => <Link to={nav.link}>{nav.name}</Link>)}
+                        {navList.map((nav, index) => <Link to={nav.link} key={index}>{nav.name}</Link>)}
                     </Nav>
                     <Login>
                         <Link to="/">
                             Login
                         </Link>
                     </Login>
+                    <Profile onClick={onClick} >
+                        기본
+                    </Profile>
+                    <ClickLogin className={click ? "show" : "hidden"}>
+                        <ul>
+                            <li className='hidden'>
+                                <Link to="/search">
+                                    여행 기획
+                                </Link>
+                            </li>
+                            <li className='hidden'>
+                                <Link to="/register">
+                                    글쓰기
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/myPosts">
+                                    내 작성글
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/setting">
+                                    내 정보 수정
+                                </Link>
+                            </li>
+                            <li>로그 아웃</li>
+                        </ul>
+                    </ClickLogin>
                 </LinkBlock>
             </HeaderBlock>
             <Outlet />
@@ -50,8 +85,41 @@ const HeaderContainer = styled.div`
     left: 0;
     a {
         color: black;
-        padding: 10px;
     }
+
+    .hidden {
+        display: none;
+    }
+
+    .show { 
+        display: block;
+    }
+`
+
+const Profile = styled.div`
+    background: gray;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
+const ClickLogin = styled.div`
+    display: none;
+    position: absolute;
+    top: 100%;
+    /* margin-top: 1rem; */
+    right: 0;
+
+    li:hover {
+        background: red;
+    }
+    
+    
+    
 `
 
 const HeaderBlock = styled.div`
@@ -62,7 +130,6 @@ const HeaderBlock = styled.div`
 
 const Logo = styled.div`
     font-weight: bold;
-    /* width: 15%; */
     padding: 10px;
     display: flex;
     justify-content: center;
@@ -75,6 +142,7 @@ const Logo = styled.div`
 
 const LinkBlock = styled.div`
     display: flex;
+    position: relative;
 `
 
 const Nav = styled.div`
@@ -82,13 +150,16 @@ const Nav = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    a {
+        padding: 10px;
+    }
     
 `
 
 const Login = styled.div`
     font-weight: bold;
     padding: 10px;
-    /* width: 15%; */
     display: flex;
     justify-content: center;
     align-items: center;

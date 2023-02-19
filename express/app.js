@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const request = require("request");
 const axios = require("axios");
+const fs = require("fs");
 const port = 4000;
 
 app.use(cors())
@@ -107,6 +108,23 @@ const myStore = [
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
+
+app.get("/api/bulletin", (req, res) => {
+  console.log("들어옴");
+
+  const jsonFile = fs.readFileSync("data.json", "utf8");
+  // console.log(jsonFile)
+
+  const jsonData1 = jsonFile.toString();
+  console.log(jsonData1)
+  const jsonData = JSON.parse(jsonData1);
+  console.log(jsonData)
+  const bulletins = jsonData.bulletins;
+
+  console.log(bulletins);
+
+  // res.send("dd");
+})
 
 // 나의 저장소들을 가져온다.
 app.get("/api/store", (req, res) => {
