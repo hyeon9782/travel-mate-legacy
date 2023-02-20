@@ -76,7 +76,7 @@ let Header = () => {
 
 const HeaderContainer = styled.div`
     display: flex;
-    height: 70px;
+    height: 5vh;
     width: 100vw;
     background-color: lightgray;
     font-size: 1.5rem;
@@ -124,6 +124,7 @@ const ClickLogin = styled.div`
 
 const HeaderBlock = styled.div`
     width: 100vw;
+    height: 5vh;
     display: flex;
     justify-content: space-between;
 `

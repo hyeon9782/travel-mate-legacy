@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import PlaceList from "../components/place/PlaceList";
 import PlanningCourse from '../components/plan/PlanningCourse';
 import Location from '../components/kakao/Location';
-import Map from '../components/kakao/Map';
 
 const PlanPage = () => {
     return (
@@ -11,7 +10,6 @@ const PlanPage = () => {
             <div style={{"display": "flex", "width":"100%", "height":"100%"}}>
                 <PlanningCourse />
                 <Location />
-                {/* <Map /> */}
             </div>
             <ButtonBox />
         </PlanContainer>

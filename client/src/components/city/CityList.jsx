@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import AreaItem from './AreaItem';
+import CityItem from './CityItem';
 
-const AreaList = () => {
+const CityList = () => {
 
     const areas = [
         {
@@ -19,26 +19,26 @@ const AreaList = () => {
     ]
 
     return (
-        <AreaListBlock>
-            <AreaTab>
+        <CityListBlock>
+            <CityTab>
                 <span>국내</span>ㅣ<span>해외</span>
-            </AreaTab>
-            <AreaListBox>
-                {areas.map(area => <AreaItem key={area.id} item={area} />)}
-            </AreaListBox>
-        </AreaListBlock>
+            </CityTab>
+            <CityListBox>
+                {areas.map(area => <CityItem key={area.id} item={area} />)}
+            </CityListBox>
+        </CityListBlock>
     )
 }
 
-const AreaListBlock = styled.div`
+const CityListBlock = styled.div`
     
 `
 
-const AreaListBox = styled.div`
+const CityListBox = styled.div`
     display: flex;
 `
 
-const AreaTab = styled.div`
+const CityTab = styled.div`
     
     font-size: 1.7rem;
     span {
@@ -46,4 +46,4 @@ const AreaTab = styled.div`
     }
 `
 
-export default AreaList;
+export default CityList;

@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
-const AreaItem = ({ item }) => {
+const CityItem = ({ item }) => {
     return (
-        <AreaItemBlock>
+        <CityItemBlock>
             {item.name}
-        </AreaItemBlock>
+        </CityItemBlock>
     )
 }
 
-const AreaItemBlock = styled.div`
+const CityItemBlock = styled.div`
     background: lightgray;
     display: flex;
     justify-content: center;
@@ -21,4 +21,4 @@ const AreaItemBlock = styled.div`
     border-radius: 50%;
 `
 
-export default AreaItem;
+export default CityItem;

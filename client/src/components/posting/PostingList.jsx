@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { fetchBulletin } from '../../apis/bulletin';
-import BulletinItem from './BulletinItem';
+import { fetchPosting } from '../../apis/posting';
+import PostingItem from './PostingItem';
 
-const BulletinList = () => {
+const PostingList = () => {
 
     const bulletins = [
         {
@@ -62,33 +62,33 @@ const BulletinList = () => {
 
     const getData = async () => {
         console.log("들어옴")
-        setTestList(await fetchBulletin())
+        setTestList(await fetchPosting())
         console.log("함수 실행 후")
     }
     
 
     return (
-        <BulletinListBlock>
-            <BulletinTab>
+        <PostingListBlock>
+            <PostingTab>
                 {tabs.map((item , index) => <div key={index} >{item}</div>)}
-            </BulletinTab>
-            <BulletinListBox>
-                {bulletins.map(bulletin => <BulletinItem key={bulletin.id} item={bulletin} />)}
-            </BulletinListBox>
-        </BulletinListBlock>
+            </PostingTab>
+            <PostingListBox>
+                {bulletins.map(bulletin => <PostingItem key={bulletin.id} item={bulletin} />)}
+            </PostingListBox>
+        </PostingListBlock>
     )
 }
 
-const BulletinListBlock = styled.div`
+const PostingListBlock = styled.div`
     box-sizing: border-box;
     
 `
 
-const BulletinListBox = styled.div`
+const PostingListBox = styled.div`
     display: flex;
 `
 
-const BulletinTab = styled.div`
+const PostingTab = styled.div`
     font-size: 1.7rem;
     display: flex;
     margin-bottom: 10px;
@@ -98,4 +98,4 @@ const BulletinTab = styled.div`
     }
 `
 
-export default BulletinList;
+export default PostingList;

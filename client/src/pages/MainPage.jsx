@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import AreaList from '../components/area/AreaList';
-import BulletinList from '../components/bulletin/BulletinList';
+import PostingList from '../components/posting/PostingList';
+import CityList from '../components/city/CityList';
 import SwiperTest from '../components/swiper/SwiperTest';
 
 const MainPage = () => {
@@ -9,8 +9,8 @@ const MainPage = () => {
     return (
         <MainContainer>
             {/* <SwiperTest /> */}
-            <AreaList />
-            <BulletinList />
+            <CityList />
+            <PostingList />
         </MainContainer>
     )
 }

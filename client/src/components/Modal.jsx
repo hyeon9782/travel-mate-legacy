@@ -18,7 +18,7 @@ const Modal = () => {
 
     return (
         <ModalBox>
-            <button onClick={openModal}>모달</button>
+            {/* <button onClick={openModal}>모달</button> */}
             <ModalBlock className={isOpen ? "show" : "hidden"}>
                 <ModalOverlay></ModalOverlay>
                 <ModalContent>
