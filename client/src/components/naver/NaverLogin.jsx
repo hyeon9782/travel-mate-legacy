@@ -1,11 +1,15 @@
 // 구현 코드
 
 import { useEffect } from "react";
+import { useSetRecoilState } from "recoil";
+import { loginState } from "../../store/loginState";
 
 const NaverLogin = ({ setGetToken, setUserInfo }) => {
   const { naver } = window;
   const NAVER_CLIENT_ID = "YY_pDP6sySdpdhGgXStv";
   const NAVER_CALLBACK_URL = "http://localhost:3000/";
+
+  const setIsLogin = useSetRecoilState(loginState);
 
   const initializeNaverLogin = () => {
     const naverLogin = new naver.LoginWithNaverId({
@@ -36,6 +40,7 @@ const NaverLogin = ({ setGetToken, setUserInfo }) => {
         // 아래처럼 선택하여 추출이 가능하고,
         const userid = naverLogin.user.getEmail();
         const username = naverLogin.user.getName();
+        setIsLogin(true);
         console.log(userid);
         console.log(username);
         // 정보 전체를 아래처럼 state 에 저장하여 추출하여 사용가능하다.

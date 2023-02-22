@@ -4,7 +4,6 @@ import { BrowserRouter ,Routes, Route } from 'react-router-dom';
 import NotFound from './pages/NotFound';
 import { RecoilRoot } from 'recoil';
 import Header from './components/common/Header';
-import Modal from './components/Modal';
 import RegisterPage from './pages/RegisterPage';
 import SettingPage from './pages/SettingPage';
 import SearchPage from './pages/SearchPage';
@@ -12,7 +11,6 @@ import MyPostsPage from './pages/MyPostsPage';
 import CourcePage from './pages/CourcePage';
 
 function App() {
-
   return (
     <div className="App">
       <RecoilRoot>
@@ -27,7 +25,6 @@ function App() {
             <Route path='/cource' exact element={<CourcePage />} />
             <Route path='/*' element={<NotFound />} />
           </Routes>
-          <Modal />
         </BrowserRouter>
       </RecoilRoot>
     </div>

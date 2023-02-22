@@ -1,13 +1,21 @@
 import styled from 'styled-components';
 import {Outlet, Link} from 'react-router-dom';
 import { useState } from 'react';
+import Dialog from './Dialog';
+import { useRef } from 'react';
+import LoginDialog from './LoginDialog';
+import { useRecoilState } from 'recoil';
+import { loginState } from '../../store/loginState';
+
 
 
 let Header = () => {
 
+    const ref = useRef(null);
+
     const [click, setClick] = useState(false);
 
-    const [isLogin, setLogin] = useState(false);
+    const [isLogin, setIsLogin] = useRecoilState(loginState);
 
     const navList = [
         {
@@ -20,7 +28,18 @@ let Header = () => {
         }
     ]
 
+    const navClick = () => {
+
+    }
+
     const onClick = () => setClick(click ? false : true);
+
+    const logout = () => {
+        setIsLogin(false);
+        localStorage.removeItem("com.naver.nid.access_token");
+        localStorage.removeItem("com.naver.nid.oauth.state_token");
+        window.location.href = '/';
+    }
 
     return (
         <HeaderContainer>
@@ -34,13 +53,11 @@ let Header = () => {
                     <Nav>
                         {navList.map((nav, index) => <Link to={nav.link} key={index}>{nav.name}</Link>)}
                     </Nav>
-                    <Login>
-                        <Link to="/">
-                            Login
-                        </Link>
+                    <Login onClick={() => ref.current?.showModal()} className={isLogin ? "hidden" : "show"}>
+                        Login
                     </Login>
-                    <Profile onClick={onClick} >
-                        기본
+                    <Profile onClick={onClick} className={isLogin ? "show" : "hidden"}>
+                        <div>기본</div>
                     </Profile>
                     <ClickLogin className={click ? "show" : "hidden"}>
                         <ul>
@@ -64,10 +81,13 @@ let Header = () => {
                                     내 정보 수정
                                 </Link>
                             </li>
-                            <li>로그 아웃</li>
+                            <li onClick={logout}>로그 아웃</li>
                         </ul>
                     </ClickLogin>
                 </LinkBlock>
+                <Dialog ref={ref}>
+                    <LoginDialog />
+                </Dialog>
             </HeaderBlock>
             <Outlet />
         </HeaderContainer>
@@ -76,9 +96,11 @@ let Header = () => {
 
 const HeaderContainer = styled.div`
     display: flex;
-    height: 5vh;
-    width: 100vw;
+    justify-content: space-between;
     background-color: lightgray;
+    align-items: center;
+    height: 70px;
+    padding: 0 10px;
     font-size: 1.5rem;
     position: sticky;
     top: 0;
@@ -92,7 +114,7 @@ const HeaderContainer = styled.div`
     }
 
     .show { 
-        display: block;
+        display: flex;
     }
 `
 
@@ -101,6 +123,7 @@ const Profile = styled.div`
     border-radius: 50%;
     width: 50px;
     height: 50px;
+    padding: 5px;
     font-size: 1.3rem;
     display: flex;
     justify-content: center;
@@ -111,8 +134,9 @@ const ClickLogin = styled.div`
     display: none;
     position: absolute;
     top: 100%;
-    /* margin-top: 1rem; */
     right: 0;
+
+    
 
     li:hover {
         background: red;
