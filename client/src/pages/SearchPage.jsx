@@ -2,6 +2,7 @@ import { GoogleMap } from '@react-google-maps/api';
 import styled from 'styled-components';
 import GoogleSearch from '../components/google/GoogleSearch';
 import Map from '../components/google/Map';
+import MapSearch from '../components/google/MapSearch';
 
 const SearchPage = () => {
     return (
@@ -9,7 +10,7 @@ const SearchPage = () => {
             <SearchHead>
                 <SearchBox>
                     {/* <GoogleSearch /> */}
-                    <input type="text" />
+                    <MapSearch />
                 </SearchBox>
                 <BtnBox>
                     <button>다음</button>
