@@ -23,33 +23,13 @@ app.get("/", (req, res) => {
 
 // })
 
-// // 게시글 작성
-// app.post("/api/posting", (req, res) => {
-
-// })
-
-// // 모든 게시글 조회
-// app.get("/api/posting", (req, res) => {
-  
-// })
-
-// // id로 게시글 조회
-// app.get("/api/posting/:id", (req, res) => {
-
-// })
-
-// // 게시글 삭제
-// app.delete("/api/posting/:id", (req, res) => {});
-
-// // 게시글 수정
-// app.patch("/api/posting/:id", (req, res) => {});
 
 
 
 
 
-
-require("./app/routes/posting.routes.js")(app); 
+require("./app/routes/posting.routes.js")(app);
+require("./app/routes/course.routes.js")(app); 
 // 포트 넘버 설정
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

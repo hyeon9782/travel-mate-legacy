@@ -4,16 +4,26 @@ const fetchPosting = (category, city) => {
   return instance.get(`/api/posting?keyword=${category}&city=${city}`);
 };
 
-const registerPosting = () => {
-  return instance.post(`/api/posting/:id`);
+const fetchPostingWithId = (postingId) => {
+  return instance.get(`/api/posting/:postingId`);
+}
+
+const registerPosting = (posting) => {
+  return instance.post(`/api/posting/:postingId`);
 };
 
-const modifyPosting = () => {
-  return instance.patch(`/api/posting/:id`);
-}
+const modifyPosting = (posting) => {
+  return instance.put(`/api/posting/:postingId`);
+};
 
-const deletePostring = () => {
-  return instance.delete(`/api/posting/:id`);
-}
+const deletePostring = (postingId) => {
+  return instance.delete(`/api/posting/:postingId`);
+};
 
-export { fetchPosting, registerPosting, modifyPosting, deletePostring };
+export {
+  fetchPosting,
+  fetchPostingWithId,
+  registerPosting,
+  modifyPosting,
+  deletePostring,
+};

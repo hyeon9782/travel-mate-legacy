@@ -8,7 +8,10 @@ const MainPage = () => {
 
     return (
         <MainContainer>
-            {/* <SwiperTest /> */}
+
+            <SwiperBox>
+
+            </SwiperBox>
             <CityList />
             <PostingList />
         </MainContainer>
@@ -17,6 +20,21 @@ const MainPage = () => {
 
 const MainContainer = styled.div`
     font-size: 3rem;
+    display: flex;
+    flex-direction: column;
+    width:  1200px;
+    margin: 0 auto;
+    padding: 0px 16px;
+    /* box-sizing:content-box; */
+    
+`
+
+const SwiperBox = styled.div`
+    /* position: relative; */
+    height: 400px;
+    width: 100%;
+    background: gray;
+
 `
 
 

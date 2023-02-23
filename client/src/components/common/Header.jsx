@@ -24,7 +24,7 @@ let Header = () => {
         },
         {
             name: "여행 기획",
-            link: "/search"
+            link: "/course"
         }
     ]
 
@@ -62,7 +62,7 @@ let Header = () => {
                     <ClickLogin className={click ? "show" : "hidden"}>
                         <ul>
                             <li className='hidden'>
-                                <Link to="/search">
+                                <Link to="/course">
                                     여행 기획
                                 </Link>
                             </li>
