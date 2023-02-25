@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { courceListState } from '../../store/courceListState';
 import { placeState } from '../../store/placeState';
 
-const CourceItem = ({item}) => {
+const CourseItem = ({item}) => {
     const setPlaceList = useSetRecoilState(placeState);
 
     const [ courceList, setCourceList ] = useRecoilState(courceListState);
@@ -52,4 +52,4 @@ const Item = styled.div`
 
 
 
-export default CourceItem;
+export default CourseItem;

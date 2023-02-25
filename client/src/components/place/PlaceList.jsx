@@ -10,16 +10,6 @@ import { getPlace } from '../../apis/place';
 const PlaceList = () => {
     const [ placeList, setPlaceList ] = useRecoilState(placeState);
 
-    const fetchData = async () => {
-        const res = await getPlace();
-        
-        setPlaceList(res.data.place);
-    }
-
-    useEffect(() => {
-        fetchData();
-    }, []);
-
     return (
         <PlaceContainer>
             <Swiper

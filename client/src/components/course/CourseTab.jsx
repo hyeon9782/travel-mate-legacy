@@ -4,7 +4,7 @@ import { courceTabState } from "../../store/courceTabState";
 import { selectTabState } from "../../store/selectTabState";
 import DayCreator from "../days/DayCreator";
 
-const CourceTab = () => {
+const CourseTab = () => {
 
     const [currentTab, clickTab] = useRecoilState(selectTabState);
     
@@ -17,16 +17,16 @@ const CourceTab = () => {
 
     return (
         <div>
-            <CourceTabMenu>
+            <CourseTabMenu>
                 
                 {courceTab.map((item, index) => {
                     return (
                         // <DayItem className={index === currentTab ? "focused" : "submenu"}   key={index} onClick={() => selectMenuHandler(index)} />
-                        <CourceTabMenu className={index === currentTab ? "focused" : "submenu"}   key={index} onClick={() => selectMenuHandler(index)}> {index + 1} 일차 </CourceTabMenu>
+                        <CourseTabMenu className={index === currentTab ? "focused" : "submenu"}   key={index} onClick={() => selectMenuHandler(index)}> {index + 1} 일차 </CourseTabMenu>
                     )
                 })}
                 <DayCreator />
-            </CourceTabMenu>
+            </CourseTabMenu>
             <div>
                 {courceTab[currentTab].content}
             </div>
@@ -34,7 +34,7 @@ const CourceTab = () => {
     )
 }
 
-const CourceTabMenu = styled.div`
+const CourseTabMenu = styled.div`
     background: lightgray;
     font-size: 28px;
     padding: 5px;
@@ -52,4 +52,4 @@ const CourceTabMenu = styled.div`
 
 
 
-export default CourceTab;
+export default CourseTab;

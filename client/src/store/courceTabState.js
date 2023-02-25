@@ -1,20 +1,20 @@
 import { atom, selector } from "recoil";
 import CourceList from "../components/cource/CourceList";
-import { courceListState } from "./courceListState";
+import { courseListState } from "./courceListState";
 
-export const courceTabState = selector({
+export const courseTabState = selector({
   key: "courceTabState",
   get: ({ get }) => {
-    const courceList = get(courceListState);
+    const courseList = get(courseListState);
 
-    const courceList1 = [
+    const courseList1 = [
       {
         name: 312,
-        content: <CourceList item={courceList} />,
+        content: <CourceList item={courseList} />,
       },
     ];
 
 
-    return courceList1;
+    return courseList1;
   }
 });

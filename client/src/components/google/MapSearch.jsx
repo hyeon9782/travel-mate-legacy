@@ -1,39 +1,34 @@
 import React, { useState } from 'react';
+import { useSetRecoilState } from 'recoil';
 import { searchGoogleMap } from '../../apis/google';
+import { searchState } from '../../store/searchState';
+import styled from 'styled-components';
 
 function MapSearch() {
   const [input, setInput] = useState('');
-  const [places, setPlaces] = useState([]);
+
+  const setSearchState = useSetRecoilState(searchState)
   
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     const res = await searchGoogleMap(input)
-
-    console.log(res.data)
-    setPlaces(res.data)
-    
-    // fetch(url)
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     setPlaces(data.results);
-    //   })
-    //   .catch(error => console.log(error));
+    setSearchState(res.data);
   }
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input type="text" value={input} onChange={(e) => setInput(e.target.value)} />
-        <button type="submit">Search</button>
+        <SearchInput type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder="장소를 검색해주세요" />
       </form>
-      <ul>
-        {places.map(place => (
-          <li key={place.place_id}>{place.name} - {place.formatted_address}</li>
-        ))}
-      </ul>
     </div>
   );
 }
+
+const SearchInput = styled.input`
+  
+  width: 100%;
+  height: 30px;
+  
+`
 
 export default MapSearch;

@@ -1,6 +1,4 @@
-import { GoogleMap } from '@react-google-maps/api';
 import styled from 'styled-components';
-import GoogleSearch from '../components/google/GoogleSearch';
 import Map from '../components/google/Map';
 import MapSearch from '../components/google/MapSearch';
 
@@ -9,7 +7,6 @@ const SearchPage = () => {
         <SearchPageBlock>
             <SearchHead>
                 <SearchBox>
-                    {/* <GoogleSearch /> */}
                     <MapSearch />
                 </SearchBox>
                 <BtnBox>
@@ -23,7 +20,6 @@ const SearchPage = () => {
                 <SelectMap>
                     <Map />
                 </SelectMap>
-                {/* <GoogleMap /> */}
                 
             </MapBlock>
         </SearchPageBlock>

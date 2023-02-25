@@ -1,9 +1,9 @@
 import { useRecoilState } from "recoil";
 import { courceListState } from "../../store/courceListState";
-import CourceItem from "./CourceItem";
+import CourceItem from "./CourseItem";
 import styled from 'styled-components';
 
-const CourceList = ({list}) => {
+const CourseList = ({list}) => {
 
     const [courceList, setCourceList] = useRecoilState(courceListState)
 
@@ -21,4 +21,4 @@ const CourceBox = styled.div`
     flex-wrap: wrap;
 `
 
-export default CourceList;
+export default CourseList;
