@@ -1,26 +1,23 @@
+import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import DayCreator from './DayCreator';
+import { courseTabState } from '../../store/courseTabState';
+import DayCreater from './DayCreater';
 import DayItem from './DayItem';
 
-const DayList = ({list}) => {
+const DayList = () => {
 
-    // const dayList = useRecoilValue(dayListState);
+    const days = useRecoilValue(courseTabState);
 
     return (
-        <DayWrap>
-            {list.map((dayItem) => {
-                return <DayItem key={dayItem.day} item={dayItem} />
-            })}
-            <DayCreator />
-        </DayWrap>
+        <DayListBlock>
+            {days.map((day, index) => <DayItem key={index} item={day} />)}
+            <DayCreater />
+        </DayListBlock>
     )
 }
 
-const DayWrap = styled.div`
+const DayListBlock = styled.div`
     display: flex;
 `
-
-
-
 
 export default DayList;

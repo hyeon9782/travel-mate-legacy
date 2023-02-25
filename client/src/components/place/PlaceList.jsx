@@ -16,7 +16,7 @@ const PlaceList = () => {
                 spaceBetween={10}
                 slidesPerView={ placeList.length < 8 ? placeList.length : 8 }
             >
-                {placeList.map((place) => {
+                {placeList && placeList.map((place) => {
                     return (
                         <SwiperSlide key={place.id}>
                             <PlaceItem item={place}  />

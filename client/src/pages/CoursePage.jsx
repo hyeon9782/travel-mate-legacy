@@ -1,15 +1,17 @@
 import styled from 'styled-components';
 import MapSearch from '../components/google/MapSearch';
-import Map from '../components/google/Map';
 import CourseList from '../components/course/CourseList';
 import PlaceList from '../components/place/PlaceList';
+import SearchMap from '../components/google/SearchMap';
+import CourseMap from '../components/google/CourseMap';
 
 const CoursePage = () => {
     return (
         <CoursePageBlock>
             <GoogleMapSection>
                 <MapSearch />
-                <Map />
+                <SearchMap />
+                <CourseMap />
             </GoogleMapSection>
             <CourseListSection>
                 <PlaceList />

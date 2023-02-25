@@ -1,6 +1,7 @@
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { courceListState } from '../../store/courceListState';
+import { courseListState } from '../../store/courseListState';
+import { currentTabState } from '../../store/currentTabState';
 import { placeState } from '../../store/placeState';
 
 
@@ -10,7 +11,9 @@ const PlaceItem = ({ item }) => {
     
     const index = placeList.findIndex((listItem) => listItem === item);
 
-    const setCourceList = useSetRecoilState(courceListState);
+    const [courseList, setCourseList] = useRecoilState(courseListState);
+
+    const currentTab = useRecoilValue(currentTabState);
 
     // 카카오 맵에 마커를 추가하는 함수
     function addMarker(id, name) {
@@ -18,29 +21,44 @@ const PlaceItem = ({ item }) => {
     }
 
     // 선택한 장소를 여행 코스에 추가하는 함수
-    function addCource(name, addr, id) {
+    function addCource(name, coord, id) {
         console.log(`${item.name} 클릭`)
-        setCourceList((oldCourceList) => [
-            ...oldCourceList,
-            {
-                id,
-                name,
-                addr,
-            }
-        ])
+        const currentCourseList = [...courseList[currentTab]];
+        console.log(courseList);
+        console.log(currentCourseList);
+        currentCourseList.push({
+            id,
+            name,
+            coord
+        });
 
+        const newCourseList = [...courseList];
+
+        newCourseList[currentTab] = currentCourseList;
+
+        console.log(newCourseList);
+
+
+        setCourseList(newCourseList);
+        
+        
+        // 선택한 장소 장소 리스트에서 삭제하기
         const newPlaceList = removePlaceAtIndex(placeList, index)
-
         setPlaceList(newPlaceList)
 
         
     }
 
     return (
-        <Wrap onClick={() => addCource(item.name, item.addr, item.id)}>
+        <Wrap onClick={() => addCource(item.name, item.coord, item.id)}>
             {item.name}
         </Wrap>
     )
+}
+
+
+function replaceItemAtIndex(arr, index, newValue) {
+    return [...arr.slice(0, index), newValue, ...arr.slice(index + 1)];
 }
 
 function removePlaceAtIndex(arr, index) {

@@ -3,22 +3,21 @@ import { useRecoilState, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { placeState } from '../../store/placeState';
 
-const InfoWindowContent = ({item}) => {
+const InfoWindowContent = ({item, itemIndex}) => {
 
     const [place, setPlace] = useRecoilState(placeState);
 
     const [check, setCheck] = useState(false);
 
-    const index = place.findIndex((listItem) => listItem === item);
-
     const addPlace = () => {
         setPlace((oldPlace) => [
             ...oldPlace,
             {
-                id: item.place_id,
+                id: itemIndex,
                 name: item.name,
                 rating: item.rating,
-                ratingsTotal: item.user_ratings_total
+                ratingsTotal: item.user_ratings_total,
+                coord: item.geometry.location
             }
         ]);
         setCheck(true);
@@ -26,11 +25,9 @@ const InfoWindowContent = ({item}) => {
     }
 
     const removePlace = () => {
-        const newList = removeItemAtIndex(place, index);
-        setPlace(newList);
+        const newPlaceList = place.filter((item) => item.id !== itemIndex);
+        setPlace(newPlaceList);
         setCheck(false);
-        console.log(index);
-        console.log(place);
     }
 
     return (
@@ -42,15 +39,9 @@ const InfoWindowContent = ({item}) => {
                 {!check ? 
                     <button className='addBtn' onClick={addPlace}>추가하기</button> : <button onClick={removePlace}>제거하기</button>
                 }
-                
-                
             </div>
         </ContentBlock>
     )
-}
-
-function removeItemAtIndex(arr, index) {
-    return [...arr.slice(0, index), ...arr.slice(index + 1)];
 }
 
 const ContentBlock = styled.div`
@@ -72,8 +63,7 @@ const ContentBlock = styled.div`
         justify-content: center;
         padding-top: 5px;
     }
-
-    
+   
 `
 
 export default InfoWindowContent;

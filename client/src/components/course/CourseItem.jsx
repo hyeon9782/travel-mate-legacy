@@ -1,40 +1,42 @@
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { courceListState } from '../../store/courceListState';
+import { courseListState } from '../../store/courseListState';
 import { placeState } from '../../store/placeState';
 
-const CourseItem = ({item}) => {
+const CourseItem = ({item, itemIndex} ) => {
     const setPlaceList = useSetRecoilState(placeState);
 
-    const [ courceList, setCourceList ] = useRecoilState(courceListState);
+    const [ courceList, setCourceList ] = useRecoilState(courseListState);
 
-    const index = courceList.findIndex((listItem) => listItem === item);
-
-    const deleteCource = (id, name, addr) => {
+    const deleteCource = (id, name, coord) => {
 
         console.log(`${item.name} 삭제`)
-        const newCourceList = removePlaceAtIndex(courceList, index)
 
-        setCourceList(newCourceList)
+        // 코스 리스트 삭제
+        const updatedCourseList = courceList.map((innerArray) => {
+            return innerArray.filter((el, index) => {
+                return index !== itemIndex;
+            })
+        })
 
+        setCourceList(updatedCourseList);
+        
+        // 장소 리스트 추가
         setPlaceList((oldPlaceList) => [
             ...oldPlaceList,
             {
                 id,
                 name,
-                addr
+                coord
             }
         ])
+        
     }
     return (
-        <Item onClick={() => deleteCource(item.id, item.name, item.addr)}>
+        <Item onClick={() => deleteCource(item.id, item.name, item.coord)}>
             {item ? item.name : "기본1"} 
         </Item>
     )
-}
-
-function removePlaceAtIndex(arr, index) {
-    return [...arr.slice(0, index), ...arr.slice(index + 1)];
 }
 
 const Item = styled.div`
@@ -49,7 +51,5 @@ const Item = styled.div`
     align-items: center;
     font-weight: bold;
 `
-
-
 
 export default CourseItem;
