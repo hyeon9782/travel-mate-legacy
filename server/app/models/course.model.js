@@ -1,21 +1,75 @@
 const sql = require("./db.js");
 
 // 생성자
-const Course = function(course) {
-    this.course_title = course.course_title;
+const Course = function(course, place) {
+    // this.course_title = course.course_title;
+    // this.course_city = course.course_city;
+    // this.user_id = course.user_id;
+    // this.place_name = place.place_name;
+    // this.place_coord = place.place_coord;
+    // this.place_status = place.place_status;
+    // this.course_days = place.course_days;
+    // this.course_id = place.course_id;
+    this.courseList = course;
+    this.placeList = place;
+}
+
+const Place = function(place) {
+  this.place_name = place.place_name;
+  this.place_coord = place.place_coord;
+  this.place_status = place.place_status; 
+  this.course_days = place.course_days;
+  this.course_id = place.course_id;
 }
 
 // course 등록
-Course.create = (newCourse, result) => {
-    sql.query("INSERT INTO course SET ?", newCourse, (err, res) => {
-        if (err) {
-            console.log("err : ", err);
-            result(err, null);
-            return;
-        }
-        console.log("Created course: ", { id: res.insertId, ...newCourse });
-        result(null, { id: res.insertId, ...newCourse });
+Course.create = (courseList, newPlace, result) => {
+  console.log(courseList);
+  console.log(courseList["corseList"]);
+
+    let places = [];
+
+    courseList["corseList"].map((course) => {
+      return course.map((place) => {
+        places.push(place);
+      });
     });
+
+    console.log(places);
+
+    
+
+    // const courseInfo = newCourse;
+
+    // const courseInsert = "INSERT INTO course SET ? ;";
+    // const sql1s = sql.format(courseInsert, );
+    // const placeInsert = "INSERT INTO place SET ? ;";
+
+
+    // const placeQuery = "insert into place set ? ;";
+    // const placeValues = [
+    //   [],
+    // ]
+
+    sql.query(placeQuery, (err, res) => {
+      if (err) {
+        console.log("err : ", err);
+        result(err, null);
+        return;
+      }
+      console.log("Created course: ", { id: res.insertId, ...newCourse });
+      result(null, { id: res.insertId, ...newCourse });
+    });
+
+    // sql.query(courseInsert, placeInsert, (err, res) => {
+    //   if (err) {
+    //     console.log("err : ", err);
+    //     result(err, null);
+    //     return;
+    //   }
+    //   console.log("Created course: ", { id: res.insertId, ...newCourse });
+    //   result(null, { id: res.insertId, ...newCourse });
+    // });
 };
 
 // user_id로 course 조회
@@ -112,4 +166,4 @@ function checkedError(err, result) {
     }
 }
 
-module.exports = Course;
+module.exports = Course, Place;

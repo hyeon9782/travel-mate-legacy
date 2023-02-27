@@ -8,9 +8,25 @@ exports.create = (req, res) => {
       });
     }
 
+
+
+
     const course = new Course({
-        course_title: req.body.course_title
+        courseList: req.body.courseList,
+        placeList: req.body.placeList
     });
+
+    // const placeList = req.body.placeList;
+    
+    // placeList.map((place) => )
+
+    // const place = new Place({
+    //   place_name : req.body.placeList,
+    //   place_coord : req.body.placeList,
+    //   place_status : req.body.placeList, 
+    //   course_days : req.body.placeList,
+    //   course_id : req.body.placeList,
+    // })
 
     Course.create(course, (err, data) => {
         if (err) {

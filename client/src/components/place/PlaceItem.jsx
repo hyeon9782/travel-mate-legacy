@@ -22,10 +22,13 @@ const PlaceItem = ({ item }) => {
 
     // 선택한 장소를 여행 코스에 추가하는 함수
     function addCource(name, coord, id) {
-        console.log(`${item.name} 클릭`)
-        const currentCourseList = [...courseList[currentTab]];
-        console.log(courseList);
-        console.log(currentCourseList);
+        console.log(`${item.name} 클릭`);
+        
+        let currentCourseList = []
+        if (courseList[currentTab]) {
+            currentCourseList = [...courseList[currentTab]];
+        }
+        
         currentCourseList.push({
             id,
             name,

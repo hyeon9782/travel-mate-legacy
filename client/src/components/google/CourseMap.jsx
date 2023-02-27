@@ -2,6 +2,7 @@ import { InfoWindow } from "@react-google-maps/api";
 import { useRecoilValue } from "recoil";
 import { courseListState } from "../../store/courseListState";
 import { currentTabState } from "../../store/currentTabState";
+import { DirectionsRenderer } from "@react-google-maps/api";
 import InfoWindowContent from "./InfoWindowContent";
 import Map from "./Map";
 

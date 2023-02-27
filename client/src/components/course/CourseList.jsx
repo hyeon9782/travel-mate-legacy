@@ -2,7 +2,6 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { courseListState } from "../../store/courseListState";
 import CourceItem from "./CourseItem";
 import styled from 'styled-components';
-import { useState } from "react";
 import DayList from "../days/DayList";
 import { currentTabState } from "../../store/currentTabState";
 
@@ -26,16 +25,16 @@ const CourseList = () => {
 
 const CourceListBlock = styled.div`
     margin: 0 auto;
+    padding: 10px;
 `
 
 const CourseListBox = styled.div`
     display: flex;
     flex-wrap: wrap;
+    padding: 10px;
+    height: 700px;
 `
 
-const CourseTabItem = styled.div`
-    
-`
 
 
 export default CourseList;
