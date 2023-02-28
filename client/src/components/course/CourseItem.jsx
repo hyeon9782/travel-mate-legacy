@@ -2,6 +2,7 @@ import { useRecoilState, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { courseListState } from '../../store/courseListState';
 import { placeState } from '../../store/placeState';
+import { BsArrowRight } from 'react-icons/bs';
 
 const CourseItem = ({item, itemIndex} ) => {
     const setPlaceList = useSetRecoilState(placeState);
@@ -33,11 +34,26 @@ const CourseItem = ({item, itemIndex} ) => {
         
     }
     return (
-        <Item onClick={() => deleteCource(item.id, item.name, item.coord)}>
-            {item ? item.name : "기본1"} 
-        </Item>
+        <CourseItemBlock>
+            <Item onClick={() => deleteCource(item.id, item.name, item.coord)}>
+                {item ? item.name : "기본1"} 
+            </Item>
+            <Move>
+                <div className='time'>
+                    1시간 10분
+                </div>
+                <div className='icon-box'>
+                    <BsArrowRight size="80" />
+                </div>
+            </Move>
+        </CourseItemBlock>
     )
 }
+
+const CourseItemBlock = styled.div`
+    display: flex;
+    height: 110px;
+`
 
 const Item = styled.div`
     padding: 10px;
@@ -50,6 +66,20 @@ const Item = styled.div`
     justify-content: center;
     align-items: center;
     font-weight: bold;
+`
+
+const Move = styled.div`
+     margin: 10px;
+      padding: 10px;
+    .time {
+        height: 10%;
+    }
+    .icon-box {
+        height: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 `
 
 export default CourseItem;

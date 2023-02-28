@@ -11,11 +11,35 @@ const center = {
   lng: 126.9780
 };
 
+// -33.86969151376161, 151.20789706561482
+// -33.896875101086955, 151.18635356262402
+// -33.87173854711706, 151.20795294698576
+// -33.86272054515335, 151.2094070656604
+
+// const directionsServiceOptions = {
+//   destination: "Sydney, Australia",
+//   origin: "Melbourne, Australia",
+//   travelMode: "TRANSIT"
+// };
+
+const destinations = [
+  { address: '서울특별시 종로구 종로 1', lat: 37.572036, lng: 126.976939 },
+  { address: '서울특별시 용산구 이태원로 192', lat: 37.534537, lng: 126.993041 },
+  { address: '서울특별시 강남구 삼성로 212', lat: 37.508929, lng: 127.063008 }
+];
+
+// const directionsServiceOptions = {
+//   destination: {lat: -33.86272054515335,  lng: 151.2094070656604},
+//   origin: {lat: -33.86969151376161,  lng: 151.20789706561482},
+//   travelMode: "TRANSIT"
+// };
+
 const directionsServiceOptions = {
-  destination: "Sydney, Australia",
-  origin: "Melbourne, Australia",
-  travelMode: "DRIVING"
+  origin: destinations[0],
+  destination: destinations[destinations.length - 1],
+  travelMode: "TRANSIT"
 };
+
 
 const RenderMap = () => {
   const [response, setResponse] = useState(null);

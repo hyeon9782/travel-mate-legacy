@@ -1,6 +1,7 @@
 import { useRecoilState, useRecoilValue } from "recoil";
 import { courseListState } from "../../store/courseListState";
 import CourceItem from "./CourseItem";
+import Move from "./Move";
 import styled from 'styled-components';
 import DayList from "../days/DayList";
 import { currentTabState } from "../../store/currentTabState";
@@ -16,7 +17,9 @@ const CourseList = () => {
             <DayList />
             <CourseListBox>
                 {courceList[currentTab] && courceList[currentTab].map((cource, index) => {
-                    return <CourceItem item={cource} key={index} itemIndex={index}/>
+                    return (
+                        <CourceItem item={cource} key={index} itemIndex={index}/>
+                    )
                 })}
             </CourseListBox>
         </CourceListBlock>

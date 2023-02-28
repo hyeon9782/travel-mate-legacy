@@ -1,7 +1,7 @@
 const Move = () => {
     return (
         <div>
-            
+            move
         </div>
     )
 }

@@ -24,6 +24,10 @@ app.get("/api/search", async (req, res) => {
 
 })
 
+app.get("/api/city", async (req, res) => {
+  
+})
+
 
 
 

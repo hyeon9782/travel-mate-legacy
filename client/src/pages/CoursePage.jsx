@@ -40,9 +40,9 @@ const CoursePage = () => {
         <CoursePageBlock>
             <GoogleMapSection>
                 <MapSearch />
-                {/* <SearchMap />
-                <CourseMap /> */}
-                <RenderMap />
+                <SearchMap />
+                <CourseMap />
+                {/* <RenderMap /> */}
             </GoogleMapSection>
             <CourseListSection>
                 <PlaceList />
