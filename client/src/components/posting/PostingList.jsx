@@ -1,33 +1,52 @@
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { fetchPosting } from '../../apis/posting';
 import PostingItem from './PostingItem';
+import useFetchPosting from "../../hooks/useFetchPosting";
+import useIntersect from "../../hooks/useIntersect";
+import Loading from '../common/Loading'
+import CityList from '../city/CityList'
+import { useMemo } from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const PostingList = () => {
 
     const tabs = ["동행 모집", "여행 후기", "여행 질문"]
 
-    const [testList, setTestList] = useState([]);
+    const [category, setCategory] = useState(null);
 
-    useEffect(() => {
-        getData()
-    },[])
+    const [city, setCity] = useState(null);
 
-    const getData = async () => {
-        const res = await fetchPosting()
-        console.log(res);
-        setTestList(res.data)
-    }
+    const { data, hasNextPage, isFetching, fetchNextPage, refetch } = useFetchPosting({ size: 8, category})
+
+    const postings = useMemo(
+        () => (data ? data.pages.flatMap(({ data }) => data.contents) : []),
+        [data]
+    )
     
+    useEffect(() => {
+        refetch({ refetchPage: 0 })
+    }, [category])
+    
+
+    const ref = useIntersect(async (entry, observer) => {
+        observer.unobserve(entry.target)
+        if (hasNextPage && !isFetching) {
+            fetchNextPage()
+        }
+    })
 
     return (
         <PostingListBlock>
+            <CityList />
             <PostingTab>
-                {tabs.map((item , index) => <div key={index} >{item}</div>)}
+                {tabs.map((item , index) => <div key={index} onClick={() => setCategory(item)}>{item}</div>)}
             </PostingTab>
             <PostingListBox>
-                {testList.map(posting => <PostingItem key={posting.posting_id} item={posting} />)}
+                {postings.map(posting => <PostingItem key={posting.id} item={posting} />)}
+                {isFetching && <Loading />}
+                <div ref={ref} style={{"height": "1px"}}></div>
             </PostingListBox>
+            
         </PostingListBlock>
     )
 }

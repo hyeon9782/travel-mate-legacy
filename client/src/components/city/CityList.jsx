@@ -21,7 +21,7 @@ const CityList = () => {
     return (
         <CityListBlock>
             <CityTab>
-                <span>국내</span>ㅣ<span>해외</span>
+                <span>전체</span>ㅣ<span>국내</span>ㅣ<span>해외</span>
             </CityTab>
             <CityListBox>
                 {areas.map(area => <CityItem key={area.id} item={area} />)}

@@ -4,6 +4,20 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ReactModal from 'react-modal';
+import { QueryClient, QueryClientProvider, QueryCache } from "react-query";
+import { worker } from "./mocks/worker";
+worker.start();
+
+const queryClient = new QueryClient({
+  queryCache: new QueryCache({
+    onError: (error, query) => {
+      console.log("onError", error);
+    },
+    onSuccess: (data) => {
+      console.log("onSuccess", data);
+    },
+  }),
+});
 
 ReactModal.setAppElement("#root");
 
@@ -11,7 +25,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <App />
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
   </React.StrictMode>
 );
 

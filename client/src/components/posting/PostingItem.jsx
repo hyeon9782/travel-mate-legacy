@@ -4,10 +4,10 @@ const PostingItem = ({ item }) => {
     return (
         <PostingItemBlock>
             <ul>
-                <li>{item.posting_category}</li>
-                <li>마감일ㅣ{item.deadlineDate}</li>
-                <li>{item.posting_title}</li>
-                <li>여행 지역ㅣ{item.area}</li>
+                <li>{item.category}</li>
+                <li>마감일ㅣ{item.deadline}</li>
+                <li>{item.title}</li>
+                <li>여행 지역ㅣ{item.city}</li>
                 <li>여행 기간ㅣ{item.startDate} ~ {item.endDate}</li>
             </ul>
             <PostingItemFooter>

@@ -1,7 +1,9 @@
 import { instance } from "./index";
 
-const fetchPosting = (category, city) => {
-  return instance.get(`/api/posting?keyword=${category}&city=${city}`);
+const fetchPosting = (category, city, params) => {
+  return instance.get(`/api/posting`, {
+    params
+  });
 };
 
 const fetchPostingWithId = (postingId) => {

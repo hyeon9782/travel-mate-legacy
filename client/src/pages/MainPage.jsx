@@ -1,8 +1,6 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import PostingList from '../components/posting/PostingList';
-import CityList from '../components/city/CityList';
-import SwiperTest from '../components/swiper/SwiperTest';
+
 
 const MainPage = () => {
 
@@ -12,7 +10,7 @@ const MainPage = () => {
             <SwiperBox>
 
             </SwiperBox>
-            <CityList />
+            {/* <CityList /> */}
             <PostingList />
         </MainContainer>
     )
