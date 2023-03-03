@@ -72,7 +72,7 @@ let Header = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/myPosts">
+                                <Link to="/myPosting">
                                     내 작성글
                                 </Link>
                             </li>

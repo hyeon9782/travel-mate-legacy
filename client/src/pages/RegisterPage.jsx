@@ -1,10 +1,31 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { registerPosting } from '../apis/posting';
 import Editor from '../components/posting/Editor';
 
 const RegisterPage = () => {
 
-    const [formData, setFormData] = useState();
+    const [formData, setFormData] = useState({
+        title: "",
+        city: "",
+        category: "",
+        startDate: "",
+        endDate: "",
+        deadline: "",
+        userName: ""
+    });
+
+    const onChangeForm = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        })
+        console.log(formData);
+    }
+
+    
+
+    
 
     return (
         <RegisterPageBlock>
@@ -16,24 +37,24 @@ const RegisterPage = () => {
                     <ul>
                         <li>
                             <label>게시글 구분</label><br />
-                            <input type="text" name='category' className='input1'/>
+                            <input type="text" name='category' className='input1'onChange={onChangeForm} />
                         </li>
                         <li>
                             <label>모집 마감일</label><br />
-                            <input type="date" name='deadline' className='input1'/>
+                            <input type="date" name='deadline' className='input1'onChange={onChangeForm}/>
                         </li>
                     </ul>
                     <ul>
                         <li>
                             <label>여행 기간</label><br />
                             <DurationBox>
-                                <input type="date" name="startDate" className='input2'/>
-                                <input type="date" name="endDate" className='input2'/>
+                                <input type="date" name="startDate" className='input2'onChange={onChangeForm} />
+                                <input type="date" name="endDate" className='input2'onChange={onChangeForm} />
                             </DurationBox>
                         </li>
                         <li>
                             <label>여행 지역</label><br />
-                            <input type="text" name='city' className='input1' />
+                            <input type="text" name='city' className='input1' onChange={onChangeForm} />
                         </li>
                     </ul>
                 </form>
@@ -44,14 +65,14 @@ const RegisterPage = () => {
                 </SectionHead>
                 <TitleBox>
                     <label>제목</label>
-                    <input type="text" name='posting_title' />
+                    <input type="text" name='title' onChange={onChangeForm} />
                 </TitleBox>
                 <EditerBox>
                     {/* <Editor /> */}
                 </EditerBox>
                 <BtnBox>
                     <CancleBtn>취소</CancleBtn>
-                    <ResitBtn>등록</ResitBtn>
+                    <ResitBtn onClick={() => registerPosting(formData)}>등록</ResitBtn>
                 </BtnBox>
             </DetailContent>
             <TravelCourseBox>

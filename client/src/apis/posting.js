@@ -11,11 +11,11 @@ const fetchPostingWithId = (postingId) => {
 }
 
 const registerPosting = (posting) => {
-  return instance.post(`/api/posting/:postingId`);
+  return instance.post(`/api/posting`, posting);
 };
 
 const modifyPosting = (posting) => {
-  return instance.put(`/api/posting/:postingId`);
+  return instance.put(`/api/posting/:postingId`, posting);
 };
 
 const deletePostring = (postingId) => {

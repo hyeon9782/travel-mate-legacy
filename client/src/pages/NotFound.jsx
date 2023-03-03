@@ -1,8 +1,10 @@
+import Container from "../components/common/Container";
+
 const NotFound = () => {
     return (
-        <div id="main">
-            <h1>NotFound</h1>
-        </div>
+        <Container>
+            NotFound
+        </Container>
     )
 }
 

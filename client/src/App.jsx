@@ -6,7 +6,7 @@ import { RecoilRoot } from 'recoil';
 import Header from './components/common/Header';
 import RegisterPage from './pages/RegisterPage';
 import SettingPage from './pages/SettingPage';
-import MyPostsPage from './pages/MyPostsPage';
+import MyPostingPage from './pages/MyPostingPage';
 import CoursePage from './pages/CoursePage';
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
           <Routes>
             <Route path='/' element={<MainPage />} />
             <Route path='/register' exact element={<RegisterPage />} />
-            <Route path='/myPosts' exact element={<MyPostsPage />} />
+            <Route path='/myPosting' exact element={<MyPostingPage />} />
             <Route path='/setting' exact element={<SettingPage />} />
             <Route path='/course' exact element={<CoursePage />} />
             <Route path='/*' element={<NotFound />} />

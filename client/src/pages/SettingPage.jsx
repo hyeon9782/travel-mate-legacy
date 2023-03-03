@@ -1,15 +1,14 @@
 import styled from 'styled-components';
+import Container from '../components/common/Container';
 
 const SettingPage = () => {
     return (
-        <SettingPageBlock>
+        <Container>
             정보 수정 페이지
-        </SettingPageBlock>
+        </Container>
     )
 }
 
-const SettingPageBlock = styled.div`
-    
-`
+
 
 export default SettingPage;
