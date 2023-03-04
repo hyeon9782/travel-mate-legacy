@@ -4,7 +4,7 @@ import { courseListState } from '../../store/courseListState';
 import { placeState } from '../../store/placeState';
 import { BsArrowRight } from 'react-icons/bs';
 
-const CourseItem = ({item, itemIndex} ) => {
+const CourseItemTest = ({item, itemIndex} ) => {
     const setPlaceList = useSetRecoilState(placeState);
 
     const [ courceList, setCourceList ] = useRecoilState(courseListState);
@@ -82,4 +82,4 @@ const Move = styled.div`
     }
 `
 
-export default CourseItem;
+export default CourseItemTest;

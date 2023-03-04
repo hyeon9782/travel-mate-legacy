@@ -8,7 +8,7 @@ import { useMemo } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-const PostingList = () => {
+const PostingList = ({ userId }) => {
 
     const tabs = ["동행 모집", "여행 후기", "여행 질문"]
 
