@@ -1,4 +1,5 @@
 import { rest } from "msw";
+import axios from 'axios';
 
 const city = ["서울", "강릉", "부산", "전주", "오사카", "방콩"]
 
@@ -88,6 +89,20 @@ export const handlers = [
     );
   }),
 
+  // 구글 맵 검색
+  rest.get("/api/search", async (req, res, ctx) => {
+    return 
+  }),
+
+  // 포스팅 조회하기 (userId)
+  rest.get("/api/posting", async (req, res, ctx) => {
+    const url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${req.query.keyword}&key=${process.env.NODE_ENV_GOOGLE_API_KEY}`;
+    const result = await axios.get(url);
+    console.log(result.data.results);
+    const test = result.data.results;
+    return res(ctx.status(200), ctx.json(test));
+  }),
+
   // 포스팅 등록하기
   rest.post("/api/posting", async (req, res, ctx) => {
     const posting = req.body;
@@ -111,14 +126,22 @@ export const handlers = [
     return res(ctx.status(200), ctx.json({ message: "Success" }));
   }),
 
-  // 여행 코스 조회하기
+  // 여행 코스 조회하기 (userId)
   rest.get("/api/course", async (req, res, ctx) => {
-    
-    return res(ctx.status(200), ctx.json(courseList));
+    const selectCourse = courseList.filter((course) => course["userId"] === req.body.userId);
+    return res(ctx.status(200), ctx.json(selectCourse));
+  }),
+
+  // 여행 코스 조회하기 (courseId)
+  rest.get("/api/course/:id", async (req, res, ctx) => {
+
+    const selectCourse = courseList.filter((course) => course["courseId"] === req.body.courseId);
+    return res(ctx.status(200), ctx.json(selectCourse));
   }),
 
   // 여행 코스 등록하기
   rest.post("/api/course", async (req, res, ctx) => {
+    courseList.filter((course) => course)
     return res(ctx.status(200), ctx.json({ message: "Success" }));
   }),
 
