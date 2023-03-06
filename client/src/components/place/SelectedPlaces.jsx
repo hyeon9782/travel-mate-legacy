@@ -1,25 +1,54 @@
 import styled from 'styled-components';
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { currentTabState } from "../../store/currentTabState";
 import DayList from '../days/DayList';
 import { courseListState } from '../../store/courseListState';
 import SelectedPlacesItem from './SelectedPlacesItem';
+import { useEffect, useMemo } from 'react';
+import useFetchCourse from '../../hooks/useFetchCourse';
+import { useLocation } from 'react-router-dom';
+import Loading from '../common/Loading';
 
-const SelectedPlaces = () => {
+const SelectedPlaces = ({ courseId }) => {
 
-    const selectedPlaces = useRecoilValue(courseListState);
+    const [selectedPlace, setSelectPlaces ] = useRecoilState(courseListState);
     
     const currentTab = useRecoilValue(currentTabState);
+
+    const location = useLocation();
+
+    const { data, isFetching } = useFetchCourse({ id: courseId, category: "courseId" })
+
+    
+
+
+    useEffect(() => {
+        
+        if (data && location.pathname === "/course") {
+            setSelectPlaces(data.data.contents[0].selectedPlaces);
+        }
+    }, [data, location.pathname])
+
+    useEffect(() => {
+        if (!isFetching && data) {
+            setSelectPlaces(data.data.contents[0].selectedPlaces);
+        }
+    }, [isFetching, data])
+
+    
+
+    // const memoizedPlaces = useMemo(() => selectedPlace, [selectedPlace]);
 
     return (
         <SelectedBlock>
             <DayList />
             <SelectedPlaceBox>
-                {selectedPlaces[currentTab] && selectedPlaces[currentTab].map((place, index) => {
+                {selectedPlace[currentTab] && selectedPlace[currentTab].map((place, index) => {
                     return (
                         <SelectedPlacesItem item={place} key={index} itemIndex={index} />
                     )
                 })}
+                {isFetching && <Loading />}
             </SelectedPlaceBox>
         </SelectedBlock>
     )

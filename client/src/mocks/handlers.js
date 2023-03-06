@@ -18,26 +18,54 @@ const postings = Array.from(Array(99).keys()).map((id) => ({
   endDate: "2022-02-03",
   deadline: "2022-02-01",
   userName: user[Math.floor(Math.random() * user.length)],
+  userId: Math.floor(Math.random() * 3),
+  contents: `게시글 내용 ${id}`
 }));
 
 const courseList = Array.from(Array(3).keys()).map((id) => ({
-  id,
+  courseId: id,
+  userId: 1,
   title: `${city[Math.floor(Math.random() * city.length)]} 여행 코스 ${id}`,
   city: "강릉",
-  selectPlace: [
-    {
-      id,
-      name: "강릉 순두부",
-      coord: { lat: "", lng: "" },
-      days: "",
-    },
+  selectedPlaces: [
+    [
+      {
+        placId: 0,
+        name: "강릉 순두부 1",
+        coord: { lat: "", lng: "" },
+      },
+      {
+        placId: 1,
+        name: "강릉 순두부 2",
+        coord: { lat: "", lng: "" },
+      },
+      {
+        placId: 3,
+        name: "강릉 순두부 3",
+        coord: { lat: "", lng: "" },
+      },
+      {
+        placId: 4,
+        name: "강릉 순두부 4",
+        coord: { lat: "", lng: "" },
+      },
+      {
+        placId: 5,
+        name: "강릉 순두부 5",
+        coord: { lat: "", lng: "" },
+      },
+      {
+        placId: 6,
+        name: "강릉 순두부 6",
+        coord: { lat: "", lng: "" },
+      },
+    ],
   ],
-  storagePlace: [
+  storagePlaces: [
     {
-      id,
+      placeId: 9,
       name: "순두부 젤라또",
       coord: { lat: "", lng: "" },
-      days: "",
     },
   ],
 })); 
@@ -69,7 +97,10 @@ export const handlers = [
     } else if (category === null && city !== null) {
       newPostings = postings.filter((posting) => posting["city"] === city);
     } else if (category !== null && city !== null) {
-      newPostings = postings.filter((posting) => posting["city"] === city);
+      newPostings = postings.filter(
+        (posting) =>
+          posting["city"] === city && posting["category"] === category
+      );
     } else if (category === null && city === null) {
       newPostings = [...postings];
     }
@@ -89,14 +120,15 @@ export const handlers = [
     );
   }),
 
+  // // 포스팅 조회하기 (userId)
+  // rest.get("/api/posting", async (req, res, ctx) => {
+  //   return;
+  // }),
+
   // 구글 맵 검색
   rest.get("/api/search", async (req, res, ctx) => {
-    return 
-  }),
-
-  // 포스팅 조회하기 (userId)
-  rest.get("/api/posting", async (req, res, ctx) => {
-    const url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${req.query.keyword}&key=${process.env.NODE_ENV_GOOGLE_API_KEY}`;
+    const keyword = "강릉 중국집";
+    const url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${keyword}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`;
     const result = await axios.get(url);
     console.log(result.data.results);
     const test = result.data.results;
@@ -126,22 +158,54 @@ export const handlers = [
     return res(ctx.status(200), ctx.json({ message: "Success" }));
   }),
 
-  // 여행 코스 조회하기 (userId)
-  rest.get("/api/course", async (req, res, ctx) => {
-    const selectCourse = courseList.filter((course) => course["userId"] === req.body.userId);
-    return res(ctx.status(200), ctx.json(selectCourse));
-  }),
+  // // 여행 코스 조회하기 (userId)
+  // rest.get("/api/course", async (req, res, ctx) => {
+  //   const { searchParams } = req.url;
+  //   const userId = Number(searchParams.get("userId"));
+  //   const selectCourse = courseList.filter(
+  //     (course) => course["userId"] === userId
+  //   );
+
+  //   return res(
+  //     ctx.status(200),
+  //     ctx.json({
+  //       contents: selectCourse,
+  //     }),
+  //   );
+  // }),
 
   // 여행 코스 조회하기 (courseId)
-  rest.get("/api/course/:id", async (req, res, ctx) => {
+  rest.get("/api/course", async (req, res, ctx) => {
+    const { searchParams } = req.url;
+    console.log(req);
 
-    const selectCourse = courseList.filter((course) => course["courseId"] === req.body.courseId);
-    return res(ctx.status(200), ctx.json(selectCourse));
+    const category = searchParams.get("category");
+    
+    const courseId = Number(searchParams.get("courseId"));
+
+    const userId = Number(searchParams.get("userId"));
+
+    let id = 0;
+
+    if (category === 'userId') {
+      id = userId;
+    } else if (category === 'courseId') {
+      id = courseId;
+    }
+  
+    const selectCourse = courseList.filter((course) => course[category] === id);
+    return res(
+      ctx.status(200),
+      ctx.json({
+        contents: selectCourse,
+      })
+    );
   }),
 
   // 여행 코스 등록하기
   rest.post("/api/course", async (req, res, ctx) => {
-    courseList.filter((course) => course)
+    
+    courseList.filter((course) => course);
     return res(ctx.status(200), ctx.json({ message: "Success" }));
   }),
 

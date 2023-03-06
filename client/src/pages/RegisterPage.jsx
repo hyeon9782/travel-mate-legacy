@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { registerPosting } from '../apis/posting';
-import Editor from '../components/posting/Editor';
 
 const RegisterPage = () => {
 
@@ -12,18 +11,33 @@ const RegisterPage = () => {
         startDate: "",
         endDate: "",
         deadline: "",
-        userName: ""
+        userName: "관리자",
+        contents: "",
     });
 
+    const { title, city, category, startDate, endDate, deadline, contents } = formData;
+
     const onChangeForm = (e) => {
+        const { value, name } = e.target;
         setFormData({
             ...formData,
-            [e.target.name]: e.target.value,
+            [name]: value
         })
         console.log(formData);
     }
 
-    
+    const onReset = () => {
+        setFormData({
+            title: "",
+            city: "",
+            category: "",
+            startDate: "",
+            endDate: "",
+            deadline: "",
+            userName: "관리자",
+            contents: "",
+        })
+    }
 
     
 
@@ -37,24 +51,24 @@ const RegisterPage = () => {
                     <ul>
                         <li>
                             <label>게시글 구분</label><br />
-                            <input type="text" name='category' className='input1'onChange={onChangeForm} />
+                            <input type="text" name='category' className='input1' onChange={onChangeForm} value={category}/>
                         </li>
                         <li>
                             <label>모집 마감일</label><br />
-                            <input type="date" name='deadline' className='input1'onChange={onChangeForm}/>
+                            <input type="date" name='deadline' className='input1' onChange={onChangeForm} value={deadline}/>
                         </li>
                     </ul>
                     <ul>
                         <li>
                             <label>여행 기간</label><br />
                             <DurationBox>
-                                <input type="date" name="startDate" className='input2'onChange={onChangeForm} />
-                                <input type="date" name="endDate" className='input2'onChange={onChangeForm} />
+                                <input type="date" name="startDate" className='input2'onChange={onChangeForm} value={startDate} />
+                                <input type="date" name="endDate" className='input2'onChange={onChangeForm} value={endDate} />
                             </DurationBox>
                         </li>
                         <li>
                             <label>여행 지역</label><br />
-                            <input type="text" name='city' className='input1' onChange={onChangeForm} />
+                            <input type="tex" name='city' className='input1' onChange={onChangeForm} value={city}/>
                         </li>
                     </ul>
                 </form>
@@ -65,13 +79,14 @@ const RegisterPage = () => {
                 </SectionHead>
                 <TitleBox>
                     <label>제목</label>
-                    <input type="text" name='title' onChange={onChangeForm} />
+                    <input type="text" name='title' onChange={onChangeForm} value={title} />
                 </TitleBox>
                 <EditerBox>
-                    {/* <Editor /> */}
+                    <textarea name="contents" className='contents' onChange={onChangeForm} value={contents}></textarea>
                 </EditerBox>
                 <BtnBox>
                     <CancleBtn>취소</CancleBtn>
+                    <ResetBtn onClick={onReset}>초기화</ResetBtn>
                     <ResitBtn onClick={() => registerPosting(formData)}>등록</ResitBtn>
                 </BtnBox>
             </DetailContent>
@@ -83,7 +98,6 @@ const RegisterPage = () => {
 }
 
 const RegisterPageBlock = styled.div`
-    /* box-sizing: border-box; */
     display: flex;
     flex-direction: column;
     width: 1024px;
@@ -101,6 +115,12 @@ const ResitBtn = styled.button`
     height: 50px;
     background: black;
     color: white;
+`
+
+const ResetBtn = styled.button`
+    width: 100px;
+    height: 50px;
+    background: lightcoral;
 `
 
 const CancleBtn = styled.button`
@@ -175,6 +195,11 @@ const TitleBox = styled.div`
 
 const EditerBox = styled.div`
     padding: 10px;
+
+    .contents{
+        width: 100%;
+        height: 300px;
+    }
     
 `
 

@@ -1,11 +1,11 @@
 import { useQuery } from "react-query"
-import { fetchCourseWithUserId } from "../apis/course"
+import { fetchCourseWithId } from "../apis/course";
 
-const useFetchCourse = () => {
-    useQuery(
-        "getCourse",
-        fetchCourseWithUserId(1)
-    )
-}
+
+const useFetchCourse = ({ id, category }) => 
+    useQuery("fetchCourse", () => fetchCourseWithId(id, category));
+    
+
+  
 
 export default useFetchCourse;

@@ -22,7 +22,7 @@ function App() {
             <Route path='/myPosting' exact element={<MyPostingPage />} />
             <Route path='/setting' exact element={<SettingPage />} />
             <Route path='/plan' exact element={<PlanPage />} />
-            <Route path='/course' exact element={<CoursePage />} />
+            <Route path='/course/:courseId' exact element={<CoursePage />} />
             <Route path='/*' element={<NotFound />} />
           </Routes>
         </BrowserRouter>
