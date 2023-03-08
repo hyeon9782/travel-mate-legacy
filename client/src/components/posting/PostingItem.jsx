@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 import UserBox from '../user/UserBox';
 const PostingItem = ({ item }) => {
+
+    const handleClick = () => {
+        
+    }
+
     return (
-        <PostingItemBlock>
+        <PostingItemBlock onClick={handleClick}>
             <ul>
                 <li>{item.category}</li>
                 <li>마감일ㅣ{item.deadline}</li>
