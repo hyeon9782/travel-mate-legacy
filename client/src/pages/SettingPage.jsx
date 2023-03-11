@@ -4,10 +4,20 @@ import Container from '../components/common/Container';
 const SettingPage = () => {
     return (
         <Container>
-            정보 수정 페이지
+            <SettingSection>
+                <input type="text" name="nickname" />
+                <input type="text" />
+                <input type="text" />
+                <input type="text" />
+                <input type="text" />
+            </SettingSection>
         </Container>
     )
 }
+
+const SettingSection = styled.div`
+    
+`
 
 
 
