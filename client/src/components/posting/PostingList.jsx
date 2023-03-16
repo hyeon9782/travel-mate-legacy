@@ -3,7 +3,6 @@ import PostingItem from './PostingItem';
 import useFetchPosting from "../../hooks/useFetchPosting";
 import useIntersect from "../../hooks/useIntersect";
 import Loading from '../common/Loading'
-import CityList from '../city/CityList'
 import { useMemo } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -13,8 +12,6 @@ const PostingList = ({ userId }) => {
     const tabs = ["동행 모집", "여행 후기", "여행 질문"]
 
     const [category, setCategory] = useState(null);
-
-    const [city, setCity] = useState(null);
 
     const { data, hasNextPage, isFetching, fetchNextPage, refetch } = useFetchPosting({ size: 8, category})
 
@@ -37,7 +34,6 @@ const PostingList = ({ userId }) => {
 
     return (
         <PostingListBlock>
-            <CityList />
             <PostingTab>
                 {tabs.map((item , index) => <div key={index} onClick={() => setCategory(item)}>{item}</div>)}
             </PostingTab>
@@ -60,7 +56,6 @@ const PostingListBlock = styled.div`
 const PostingListBox = styled.div`
     display: flex;
     flex-wrap: wrap;
-    margin: 0 auto;
 `
 
 const PostingTab = styled.div`

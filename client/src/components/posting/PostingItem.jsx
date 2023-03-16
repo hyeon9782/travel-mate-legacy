@@ -25,9 +25,14 @@ const PostingItem = ({ item }) => {
 const PostingItemBlock = styled.div`
     font-size: 1rem;
     border: 1px solid lightgray;
-    width: 20%;
+    width: 300px;
     border-radius: 15px;
     margin: 10px;
+    box-sizing: border-box;
+
+    @media screen and (max-width: 575px){
+        width: 100%;
+    }
 
     li {
         padding: 10px;

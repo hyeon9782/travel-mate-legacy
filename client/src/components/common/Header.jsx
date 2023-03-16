@@ -102,7 +102,6 @@ const HeaderContainer = styled.div`
     height: 70px;
     padding: 0 10px;
     font-size: 1.5rem;
-    position: sticky;
     top: 0;
     left: 0;
     a {

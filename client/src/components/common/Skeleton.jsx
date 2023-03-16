@@ -9,7 +9,7 @@ const Skeleton = () => {
 }
 
 const SkeletonBlock = styled.div`
-    @keyframes loading {
+    /* @keyframes loading {
         0% {
             transform: translateX(0);
         }
@@ -17,9 +17,12 @@ const SkeletonBlock = styled.div`
         100% {
             transform: translateX(460px);
         }
-    }
+    } */
+    width: 20%;
+    border-radius: 15px;
+    background: lightgray;
 
-    
+
 `
 
 export default Skeleton;

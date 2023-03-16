@@ -9,15 +9,13 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-const SwiperTest = () => {
+const EventSwiper = () => {
   return (
     <Swiper
       style={{"zIndex":1}}
-      // install Swiper modules
       modules={[Navigation, Pagination]}
       spaceBetween={50}
       slidesPerView={1}
-      navigation
       pagination={{ clickable: true }}
       autoplay={{delay: 1000}}
     >
@@ -38,4 +36,4 @@ const EventPage = styled.div`
   height: 400px;
 `
 
-export default SwiperTest;
+export default EventSwiper;
