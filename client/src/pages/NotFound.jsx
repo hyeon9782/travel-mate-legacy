@@ -3,7 +3,7 @@ import Container from "../components/common/Container";
 const NotFound = () => {
     return (
         <Container>
-            <div>dds</div>
+            <div>dds1</div>
             NotFound
         </Container>
     )
