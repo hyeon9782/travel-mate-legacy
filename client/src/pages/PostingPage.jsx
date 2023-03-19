@@ -1,6 +1,10 @@
 const PostingPage = () => {
     return (
-        <div>d</div>
+        <>
+            <div>{posting.title}</div>
+            <div>{posting.user}</div>
+            <div>{posting.content}</div>
+        </>
     )
 }
 
