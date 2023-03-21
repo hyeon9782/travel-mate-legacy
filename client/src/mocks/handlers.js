@@ -9,9 +9,9 @@ const user = ["김보빈", "전룡재", "박다솔", "방지영", "최재희", "
 
 let id = 100;
 
-const postings = Array.from(Array(99).keys()).map((id) => ({
-  id,
-  title: `게시글 제목 ${id}`,
+const postings = Array.from(Array(32).keys()).map((postingId) => ({
+  postingId,
+  title: `게시글 제목 ${postingId}`,
   city: city[Math.floor(Math.random() * city.length)],
   category: category[Math.floor(Math.random() * category.length)],
   startDate: "2022-01-25",
@@ -19,7 +19,7 @@ const postings = Array.from(Array(99).keys()).map((id) => ({
   deadline: "2022-02-01",
   userName: user[Math.floor(Math.random() * user.length)],
   userId: Math.floor(Math.random() * 3),
-  contents: `게시글 내용 ${id}`
+  contents: `<h1>게시글 내용 ${postingId}</h1>`,
 }));
 
 const courseList = Array.from(Array(3).keys()).map((id) => ({
@@ -82,6 +82,8 @@ export const handlers = [
     const page = Number(searchParams.get("page"));
     const category = searchParams.get("category");
     const city = searchParams.get("city");
+    const userId = searchParams.get("userId");
+    const postingId = searchParams.get("postingId");
     const totalCount = postings.length;
     const totalPages = Math.round(totalCount / size);
 
@@ -89,8 +91,17 @@ export const handlers = [
 
     console.log(category);
     console.log(city);
+    console.log(userId);
 
-    if (category !== null && city === null) {
+    if (postingId !== null) {
+      newPostings = postings.filter(
+        (posting) => posting["postingId"] === Number(postingId)
+      );
+    } else if (userId !== null) {
+      newPostings = postings.filter(
+        (posting) => posting["userId"] === Number(userId)
+      );
+    } else if (category !== null && city === null) {
       newPostings = postings.filter(
         (posting) => posting["category"] === category
       );
@@ -108,7 +119,7 @@ export const handlers = [
     return res(
       ctx.status(200),
       ctx.json({
-        contents: newPostings.slice(page * size, (page + 1) * size),
+        contents: newPostings.reverse().slice(page * size, (page + 1) * size),
         pageNumber: page,
         pageSize: size,
         totalPages,
@@ -116,7 +127,7 @@ export const handlers = [
         isLastPage: totalPages <= page,
         isFirstPage: page === 0,
       }),
-      ctx.delay(500)
+      ctx.delay(100)
     );
   }),
 

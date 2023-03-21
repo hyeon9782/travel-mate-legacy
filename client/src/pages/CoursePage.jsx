@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import Back from '../components/common/Back';
 import Container from '../components/common/Container';
 import SelectedPlaces from '../components/place/SelectedPlaces'
 
@@ -11,6 +12,7 @@ const CoursePage = () => {
     
     return (
         <Container>
+            <Back />
             <CourseTitle>부산 여행</CourseTitle>
             <PlaceListBlock>
                 <SelectedPlaces courseId={courseId}/>

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const PostingItem = ({ item }) => {
     const movePage = useNavigate();
     const handleClick = () => {
-        movePage(`/posting/${item.id}`);
+        movePage(`/posting/${item.postingId}`);
     }
 
     return (

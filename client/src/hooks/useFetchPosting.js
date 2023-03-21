@@ -9,12 +9,12 @@ const postingKeys = {
   detail: (id) => [...postingKeys.details(), id],
 };
 
-const useFetchPosting = ({ size, category, city }) =>
+const useFetchPosting = ({ size, category, city, userId, postingId }) =>
   useInfiniteQuery(
     postingKeys.lists(),
     ({ pageParam = 0 }) =>
       axios.get("/api/posting", {
-        params: { page: pageParam, size, category, city },
+        params: { page: pageParam, size, category, city, userId, postingId },
       }),
     {
       getNextPageParam: ({ data: { isLastPage, pageNumber } }) =>

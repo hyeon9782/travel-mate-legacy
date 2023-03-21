@@ -1,6 +1,6 @@
 import { instance } from "./index";
 
-const fetchPosting = (category, city, params) => {
+const fetchPosting = (params) => {
   return instance.get(`/api/posting`, {
     params
   });

@@ -1,8 +1,13 @@
 import styled from 'styled-components';
+import useFetchPosting from '../../hooks/useFetchPosting';
 
 const CityItem = ({ item }) => {
+    const { data, hasNextPage, isFetching, fetchNextPage, refetch } = useFetchPosting({ size: 8, city: "서울"})
+    const handleClick = () => {
+        
+    }
     return (
-        <CityItemBlock>
+        <CityItemBlock onClick={handleClick}>
             {item.name}
         </CityItemBlock>
     )

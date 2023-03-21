@@ -18,6 +18,7 @@ const CourseItemBlock = styled.div`
     border: 1px solid black;
     border-radius: 15px;
     padding: 10px;
+    margin: 10px;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -13,7 +13,7 @@ const PostingList = ({ userId }) => {
 
     const [category, setCategory] = useState(null);
 
-    const { data, hasNextPage, isFetching, fetchNextPage, refetch } = useFetchPosting({ size: 8, category})
+    const { data, hasNextPage, isFetching, fetchNextPage, refetch } = useFetchPosting({ size: 8, category, userId})
 
     const postings = useMemo(
         () => (data ? data.pages.flatMap(({ data }) => data.contents) : []),
