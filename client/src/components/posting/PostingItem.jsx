@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import UserBox from '../user/UserBox';
+import { useNavigate } from 'react-router-dom';
 const PostingItem = ({ item }) => {
-
+    const movePage = useNavigate();
     const handleClick = () => {
-        
+        movePage(`/posting/${item.id}`);
     }
 
     return (

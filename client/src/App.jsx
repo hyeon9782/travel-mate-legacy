@@ -9,6 +9,7 @@ import SettingPage from './pages/SettingPage';
 import MyPostingPage from './pages/MyPostingPage';
 import PlanPage from './pages/PlanPage';
 import CoursePage from './pages/CoursePage';
+import PostingPage from './pages/PostingPage';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path='/setting' exact element={<SettingPage />} />
             <Route path='/plan' exact element={<PlanPage />} />
             <Route path='/course/:courseId' exact element={<CoursePage />} />
+            <Route path='/posting/:id' exact element={<PostingPage />} />
             <Route path='/*' element={<NotFound />} />
           </Routes>
         </BrowserRouter>

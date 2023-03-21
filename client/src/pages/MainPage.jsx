@@ -9,7 +9,7 @@ const MainPage = () => {
     return (
         <MainContainer>
             <SwiperSection>
-                <EventSwiper />
+                {/* <EventSwiper /> */}
             </SwiperSection>
             <PostingSection>
                 <CityList />

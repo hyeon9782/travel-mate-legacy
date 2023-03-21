@@ -5,11 +5,21 @@ const Container = ({ children }) => {
 }
 
 const ContainerBlock = styled.div`
-    /* @media screen and (max-width: 100px){
-        
-    } */
+    width: 1280px;
     margin: 0 auto;
-    width: 1200px;
+    padding: 24px 0;
+
+    @media screen and (max-width: 1300px){
+        width: 960px;
+    }
+
+    @media screen and (max-width: 980px){
+        width: 640px;
+    }
+
+    @media screen and (max-width: 575px){
+        width: 100%;
+    }
 `
 
 export default Container;
