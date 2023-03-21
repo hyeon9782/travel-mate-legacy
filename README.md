@@ -11,10 +11,8 @@ Planning Helper 는 여행 코스나 데이트 코스를 기획할 때 사용하
 
 JavaScript
 React
-Redux
-St
-
-### Back-end
+Recoil
+React-Query
 
 
 
