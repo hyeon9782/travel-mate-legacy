@@ -40,8 +40,9 @@ const PlanPage = () => {
         <PlanPageBlock>
             <GoogleMapSection>
                 <MapSearch />
+                
                 <SearchMap />
-                <CourseMap />
+                {/* <CourseMap /> */}
                 {/* <RenderMap /> */}
             </GoogleMapSection>
             <CourseListSection>

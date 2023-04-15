@@ -4,7 +4,7 @@ import { currentTabState } from "../../store/currentTabState";
 import DayList from '../days/DayList';
 import { courseListState } from '../../store/courseListState';
 import SelectedPlacesItem from './SelectedPlacesItem';
-import { useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 import useFetchCourse from '../../hooks/useFetchCourse';
 import { useLocation } from 'react-router-dom';
 import Loading from '../common/Loading';
